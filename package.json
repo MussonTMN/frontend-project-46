@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "Compares two configuration files and shows a difference.",
   "bin": {
@@ -8,7 +8,8 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
     "make": "^0.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
   }

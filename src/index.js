@@ -1,9 +1,9 @@
-import { readFileSync } from 'node:fs';
+import fs from 'fs';
 import path from 'node:path';
 import getDifference from './getDifference.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
-const getFile = (absolutePath) => readFileSync(absolutePath);
+const getFile = (absolutePath) => fs.readFileSync(absolutePath);
 
 export default (filepath1, filepath2) => {
   const path1 = getAbsolutePath(filepath1);
