@@ -7,19 +7,20 @@ const getDifference = (data1, data2) => {
 
   const result = keys.map((key) => {
     if (!Object.hasOwn(data1, key)) {
-      return `  + ${key}: ${data2[key]}`;
-    } if (!Object.hasOwn(data2, key)) {
-      return `  - ${key}: ${data1[key]}`;
-    } if (data1[key] !== data2[key]) {
-      return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
+      return [key, { type: 'added', value: data2[key] }];
     }
-    return `    ${key}: ${data1[key]}`;
+    if (!Object.hasOwn(data2, key)) {
+      return [key, { type: 'deleted', value: data1[key] }];
+    }
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+      return [key, { type: 'nested', value: getDifference(data1[key], data2[key]) }];
+    }
+    if (data1[key] !== data2[key]) {
+      return [key, { type: 'changed', value1: data1[key], value2: data2[key] }];
+    }
+    return [key, { type: 'unchanged', value: data1[key] }];
   });
-  return [
-    '{',
-    ...result,
-    '}',
-  ].join('\n');
+  return _.fromPairs(result);
 };
 
 export default getDifference;
