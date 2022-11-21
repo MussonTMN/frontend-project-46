@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
-export default (data, replacer = ' ', spacesCount = 2) => {
+export default (data) => {
+  const replacer = ' ';
+  const spacesCount = 2;
   const iter = (curentValue, depth) => {
     if (!_.isObject(curentValue)) {
       return `${curentValue}`;
