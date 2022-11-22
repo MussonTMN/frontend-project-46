@@ -7,13 +7,15 @@ const getFormat = (absolutePath) => path.extname(absolutePath);
 
 const parse = (absolutePath) => {
   const format = getFormat(absolutePath);
-  let result = '{unknown extension}';
-  if (format === '.json') {
-    result = JSON.parse(getFile(absolutePath));
-  } else if (format === '.yaml' || format === '.yml') {
-    result = yaml.load(getFile(absolutePath)) !== undefined ? yaml.load(getFile(absolutePath)) : {};
+  switch (format) {
+    case '.json':
+      return JSON.parse(getFile(absolutePath));
+    case '.yaml':
+    case '.yml':
+      return yaml.load(getFile(absolutePath)) !== undefined ? yaml.load(getFile(absolutePath)) : {};
+    default:
+      return {};
   }
-  return result;
 };
 
 export default parse;

@@ -9,9 +9,6 @@ const checkValue = (value) => {
 
 export default (data) => {
   const iter = (curentValue, ancestry) => {
-    if (!_.isObject(curentValue)) {
-      return _.isString(curentValue) ? `'${curentValue}'` : curentValue;
-    }
     const lines = Object
       .entries(curentValue)
       .flatMap(([key, val]) => {

@@ -13,16 +13,16 @@ export default (data) => {
     const lines = Object
       .entries(curentValue)
       .map(([key, val]) => {
-        if (val.type === 'added') {
-          return `${curentIndent}+ ${key}: ${iter(val.value, depth + 2)}`;
+        switch (val.type) {
+          case 'added':
+            return `${curentIndent}+ ${key}: ${iter(val.value, depth + 2)}`;
+          case 'deleted':
+            return `${curentIndent}- ${key}: ${iter(val.value, depth + 2)}`;
+          case 'changed':
+            return `${curentIndent}- ${key}: ${iter(val.value1, depth + 2)}\n${curentIndent}+ ${key}: ${iter(val.value2, depth + 2)}`;
+          default:
+            return `${curentIndent}  ${key}: ${iter(val.value || val, depth + 2)}`;
         }
-        if (val.type === 'deleted') {
-          return `${curentIndent}- ${key}: ${iter(val.value, depth + 2)}`;
-        }
-        if (val.type === 'changed') {
-          return `${curentIndent}- ${key}: ${iter(val.value1, depth + 2)}\n${curentIndent}+ ${key}: ${iter(val.value2, depth + 2)}`;
-        }
-        return `${curentIndent}  ${key}: ${iter(val.value || val, depth + 2)}`;
       });
     return [
       '{',
