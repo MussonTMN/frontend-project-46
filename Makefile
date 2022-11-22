@@ -8,7 +8,7 @@ gendiff:
 	node bin/gendiff
 
 lint:
-	npm run lint
+	npx eslint .
 
 test:
 	npx jest
