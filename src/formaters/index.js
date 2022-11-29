@@ -8,7 +8,9 @@ export default (data, formatName) => {
       return plain(data);
     case 'json':
       return json(data);
-    default:
+    case 'stylish':
       return stylish(data);
+    default:
+      throw new Error('Unknown format!');
   }
 };

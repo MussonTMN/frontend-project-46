@@ -4,7 +4,7 @@ export default (data) => {
   const replacer = ' ';
   const spacesCount = 2;
   const iter = (curentValue, depth) => {
-    if (!_.isObject(curentValue)) {
+    if (!_.isPlainObject(curentValue)) {
       return `${curentValue}`;
     }
     const indentSize = depth * spacesCount;
@@ -21,7 +21,7 @@ export default (data) => {
           case 'changed':
             return `${curentIndent}- ${key}: ${iter(val.value1, depth + 2)}\n${curentIndent}+ ${key}: ${iter(val.value2, depth + 2)}`;
           default:
-            return `${curentIndent}  ${key}: ${iter(val.value || val, depth + 2)}`;
+            return `${curentIndent}  ${key}: ${iter(val.children || val.value || val, depth + 2)}`;
         }
       });
     return [

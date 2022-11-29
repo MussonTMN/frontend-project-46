@@ -1,20 +1,14 @@
 import yaml from 'js-yaml';
-import fs from 'fs';
-import path from 'node:path';
 
-const getFile = (absolutePath) => fs.readFileSync(absolutePath, 'utf8');
-const getFormat = (absolutePath) => path.extname(absolutePath);
-
-const parse = (absolutePath) => {
-  const format = getFormat(absolutePath);
+const parse = (data, format) => {
   switch (format) {
     case '.json':
-      return JSON.parse(getFile(absolutePath));
+      return JSON.parse(data);
     case '.yaml':
     case '.yml':
-      return yaml.load(getFile(absolutePath)) !== undefined ? yaml.load(getFile(absolutePath)) : {};
+      return yaml.load(data) !== undefined ? yaml.load(data) : {};
     default:
-      return {};
+      throw new Error(`unknown extension ${format}`);
   }
 };
 

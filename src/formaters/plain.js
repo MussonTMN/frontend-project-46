@@ -20,7 +20,7 @@ export default (data) => {
           return `Property '${_.trimStart(newKey, '.')}' was removed`;
         }
         if (val.type === 'nested') {
-          return `${iter(val.value, newKey)}`;
+          return `${iter(val.children, newKey)}`;
         }
         return val.type === 'changed' ? `Property '${_.trimStart(newKey, '.')}' was updated. From ${checkValue(val.value1)} to ${checkValue(val.value2)}` : [];
       }).join('\n');
