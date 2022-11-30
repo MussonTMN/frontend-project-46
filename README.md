@@ -16,6 +16,17 @@
 Поддержка разных входных форматов: yaml, json
 Генерация отчета в виде plain text, stylish и json
 
+## Установка:
+* Установите последнюю версию [Node.js](https://nodejs.org/en/download/).
+* Скопируйте [этот репозиторий](https://github.com/MussonTMN/frontend-project-46) себе на компьютер.
+* Добавьте зависимости командой ``make install`` или ``npm install``.
+
+### Системные требования: 
+* Центральный процессор: с частотой от 1 ГГц;
+* Оперативная память: 512 Мб и выше;
+* Пространство на жестком диске: 30 Мб;
+* Платформа: Microsoft Windows, Mac OS, Linux x32/x64.
+
 ### Cравнение плоских объектов .json
 
 [![asciicast](https://asciinema.org/a/W0VUtFTdfNTOxpOgkIPTggNt3.svg)](https://asciinema.org/a/W0VUtFTdfNTOxpOgkIPTggNt3)
@@ -35,14 +46,3 @@
 ### Cравнение вложенных объектов в формате json
 
 [![asciicast](https://asciinema.org/a/IWrBbZAiMzgDiPVeHfzC06YVo.svg)](https://asciinema.org/a/IWrBbZAiMzgDiPVeHfzC06YVo)
-
-## Установка:
-* Установите последнюю версию [Node.js](https://nodejs.org/en/download/).
-* Скопируйте [этот репозиторий](https://github.com/MussonTMN/frontend-project-46) себе на компьютер.
-* Добавьте зависимости командой ``make install`` или ``npm install``.
-
-### Системные требования: 
-* Центральный процессор: с частотой от 1 ГГц;
-* Оперативная память: 512 Мб и выше;
-* Пространство на жестком диске: 30 Мб;
-* Платформа: Microsoft Windows, Mac OS, Linux x32/x64.
