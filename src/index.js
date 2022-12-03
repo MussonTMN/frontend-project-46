@@ -6,7 +6,7 @@ import formater from './formaters/index.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (absolutePath) => fs.readFileSync(absolutePath, 'utf8');
-const getExtension = (absolutePath) => path.extname(absolutePath);
+const getExtension = (absolutePath) => path.extname(absolutePath).slice(1);
 
 export default (filepath1, filepath2, formatName = 'stylish') => {
   const path1 = getAbsolutePath(filepath1);

@@ -12,7 +12,7 @@ const getDifference = (data1, data2) => {
     if (!_.has(data2, key)) {
       return [key, { type: 'deleted', value: data1[key] }];
     }
-    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return [key, { type: 'nested', children: getDifference(data1[key], data2[key]) }];
     }
     if (data1[key] !== data2[key]) {
