@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const typeOf = (value) => {
+const convert = (value) => {
   if (_.isPlainObject(value)) {
     return '[complex value]';
   }
@@ -16,11 +16,11 @@ export default (data) => {
         const tree = _.trimStart(newKey, '.');
         switch (val.type) {
           case 'added':
-            return `Property '${tree}' was added with value: ${typeOf(val.value)}`;
+            return `Property '${tree}' was added with value: ${convert(val.value)}`;
           case 'deleted':
             return `Property '${tree}' was removed`;
           case 'changed':
-            return `Property '${tree}' was updated. From ${typeOf(val.value1)} to ${typeOf(val.value2)}`;
+            return `Property '${tree}' was updated. From ${convert(val.value1)} to ${convert(val.value2)}`;
           case 'nested':
             return `${iter(val.children, newKey)}`;
           default:
